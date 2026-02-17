@@ -24,7 +24,7 @@ package org.firstinspires.ftc.teamcode.pedroPathing;
         panelsTelemetry = PanelsTelemetry.INSTANCE.getTelemetry();
 
         follower = Constants.createFollower(hardwareMap);
-        follower.setStartingPose(new Pose(72, 8, Math.toRadians(90)));
+        follower.setStartingPose(new Pose(111.974, 111.974, Math.toRadians(270)));
 
         paths = new Paths(follower); // Build paths
 
@@ -85,30 +85,37 @@ Path3 = follower.pathBuilder().addPath(
   }
   
 
-      public int autonomousPathUpdate(){
+      public int autonomousPathUpdate() {
           switch (pathState) {
               case 0:
                   follower.followPath(paths.Path1);
-                  if (!follower.isBusy()) {
-                      return 1;
-                  }
+                  pathState++;
                   break;
               case 1:
-                  follower.followPath(paths.Path2);
                   if (!follower.isBusy()) {
-                      return 2;
+                      pathState++;
+                      break;
                   }
                   break;
               case 2:
-                  follower.followPath(paths.Path3);
-                  if (!follower.isBusy()) {
-                      return 3;
-                  }
+                  follower.followPath(paths.Path2);
+                  pathState++;
                   break;
               case 3:
-                  // Autonomous is finished
+                  if (!follower.isBusy()) {
+                      pathState++;
+                      break;
+                  }
+                  break;
+              case 4:
+                  follower.followPath(paths.Path3);
+                  pathState++;
+                  break;
+              case 5:
+                  if (!follower.isBusy()) {
+                      break;
+                  }
                   break;
           }
-          return pathState;
-      }
-    }
+          return 0;
+      }}
