@@ -29,13 +29,14 @@ public class Constants {
             .drivePIDFCoefficients(new FilteredPIDFCoefficients(0.2,0.01,0.001,0.6,0.0))
             .secondaryDrivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0,0.0,0.6,0.001))
             .centripetalScaling(0.00068);
-    public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
+    public static PathConstraints pathConstraints = new PathConstraints(0.6, 50, 0.5, 0.5);
     public static PinpointConstants localizerConstants = new PinpointConstants()
             .forwardPodY(-100)
             .strafePodX(-160)
             .distanceUnit(DistanceUnit.MM)
             .hardwareMapName("pinpoint")
             .encoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD)
+            //.encoderResolution(19.183) //自作オドメトリーを使うときのencoderRevolutionの値
             .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD)
             .strafeEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD);
 
