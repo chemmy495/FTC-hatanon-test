@@ -8,7 +8,7 @@ import dev.nextftc.hardware.impl.MotorEx;
 import dev.nextftc.hardware.impl.ServoEx;
 import dev.nextftc.hardware.positionable.SetPosition;
 
-public class Lift implements Subsystem {
+/*public class Lift implements Subsystem {
     public static final Lift INSTANCE = new Lift();
     private Lift() { }
     private MotorEx motor = new MotorEx("lift_motor");
@@ -26,3 +26,4 @@ public class Lift implements Subsystem {
     public Command toMid = new RunToPosition(controlSystem, 5000).requires(this);
 }
 
+*/
