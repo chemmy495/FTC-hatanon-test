@@ -74,6 +74,18 @@ public class byNextFTCOpMode {
                     Gamepads.gamepad1().rightStickX()
             );
             driverControlled.schedule();
+            Gamepads.gamepad2().dpadUp()
+                    .whenBecomesTrue(Lift.INSTANCE.toHigh)
+                    .whenBecomesFalse(Claw.INSTANCE.open);
+
+            Gamepads.gamepad2().rightTrigger().greaterThan(0.2)
+                    .whenBecomesTrue(
+                            Claw.INSTANCE.close.then(Lift.INSTANCE.toHigh)
+                    );
+
+            Gamepads.gamepad2().leftBumper().whenBecomesTrue(
+                    Claw.INSTANCE.open.and(Lift.INSTANCE.toLow)
+            );
         }
     }
     }
